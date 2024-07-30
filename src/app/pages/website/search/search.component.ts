@@ -14,6 +14,8 @@ export class SearchComponent implements OnInit{
   travelDate: string = '';
   flights: any = [];
 
+  constructor(){}
+
   ngOnInit(): void {
     this.loadAirports();
   }
