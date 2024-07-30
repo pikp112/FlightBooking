@@ -1,1 +1,65 @@
-<p>new-flight works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h4>New Flight Form</h4>
+      </div>
+    </div>
+    <form (ngSubmit)="onSaveFlight()">
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="flightNumber" class="form-label">Flight Number</label>
+          <input type="text" id="flightNumber" class="form-control" [(ngModel)]="flightObject.flightNumber" name="flightNumber" required>
+        </div>
+        <div class="col-6">
+          <label for="departureAiportId" class="form-label">Departure Airport</label>
+          <select id="departureAiportId" class="form-select" [(ngModel)]="flightObject.departureAiportId" name="departureAiportId" required>
+            <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="departureTime" class="form-label">Departure Time</label>
+          <input type="datetime-local" id="departureTime" class="form-control" [(ngModel)]="flightObject.departureTime" name="departureTime" required>
+        </div>
+        <div class="col-6">
+          <label for="arrivalAirportId" class="form-label">Arrival Airport</label>
+          <select id="arrivalAirportId" class="form-select" [(ngModel)]="flightObject.arrivalAirportId" name="arrivalAirportId" required>
+            <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="arrivalTime" class="form-label">Arrival Time</label>
+          <input type="datetime-local" id="arrivalTime" class="form-control" [(ngModel)]="flightObject.arrivalTime" name="arrivalTime" required>
+        </div>
+        <div class="col-6">
+          <label for="price" class="form-label">Price</label>
+          <input type="number" id="price" class="form-control" [(ngModel)]="flightObject.price" name="price" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-6">
+          <label for="totalSeats" class="form-label">Total Seats</label>
+          <input type="number" id="totalSeats" class="form-control" [(ngModel)]="flightObject.totalSeats" name="totalSeats" required>
+        </div>
+        <div class="col-6">
+          <label for="flightVendorId" class="form-label">Flight Vendor</label>
+          <input type="number" id="flightVendorId" class="form-control" [(ngModel)]="flightObject.flightVendorId" name="flightVendorId" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <label for="travelDate" class="form-label">Travel Date</label>
+          <input type="date" id="travelDate" class="form-control" [(ngModel)]="flightObject.travelDate" name="travelDate" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Save Flight</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

@@ -1,1 +1,60 @@
-<p>search works!</p>
+<main>
+    <header>
+      <h1>Flight Search</h1>
+    </header>
+    
+    <div id="bodyContainer">
+      <div class="filterSearchFilter">
+        <form>
+          <div>
+            <label for="fromAirport">From Airport:</label>
+            <select id="fromAirport" [(ngModel)]="fromAirport" name="fromAirport" class="form-select">
+              <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+            </select>
+          </div>
+  
+          <div>
+            <label for="toAirport">To Airport:</label>
+            <select id="toAirport" [(ngModel)]="toAirport" name="toAirport" class="form-select">
+              <option *ngFor="let airport of airports" [value]="airport.id">{{ airport.name }}</option>
+            </select>
+          </div>
+  
+          <div>
+            <label for="travelDate">Travel Date:</label>
+            <input id="travelDate" type="date" [(ngModel)]="travelDate" name="travelDate" class="form-control"/>
+          </div>
+  
+          <div>
+            <input type="button" value="Search Flights" (click)="searchFlights()" class="rounded-btn"/>
+          </div>
+        </form>
+      </div>
+  
+      <div id="FlightResult">
+        <div class="beforeSearch" *ngIf="flights.length === 0">
+          <i class="fas fa-plane"></i>
+          <p>No flights found. Please search for flights.</p>
+        </div>
+  
+        <div class="flightResultWrapper" *ngFor="let flight of flights">
+          <div class="flightResultHeader">
+            <h4>{{ flight.airline }}</h4>
+            <p>{{ flight.departure }} - {{ flight.arrival }}</p>
+          </div>
+          <div>
+            <button class="bookTicBtn" (click)="bookTicket()">Book Ticket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Booking Modal -->
+  <div id="bookModel" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModel()">&times;</span>
+      <p>Booking information...</p>
+    </div>
+  </div>
+  
